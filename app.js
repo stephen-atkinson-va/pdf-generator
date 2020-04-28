@@ -71,6 +71,7 @@ app.get('/pdf-html', (req, res) => {
 
 app.get('/pdf-error', (req, res) => {
 
+    var data = fs.readFileSync('pdf.html', 'utf8');
     pdf.create(data).toBuffer(function(err, buffer){
         res.send(err);
       });
