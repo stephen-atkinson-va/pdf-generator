@@ -62,4 +62,19 @@ app.get('/pdf-download', (req, res) => {
 
 });
 
+app.get('/pdf-html', (req, res) => {
+
+    var data = fs.readFileSync('pdf.html', 'utf8');
+
+    res.send(data);
+});
+
+app.get('/pdf-error', (req, res) => {
+
+    pdf.create(data).toBuffer(function(err, buffer){
+        res.send(err);
+      });
+});
+
+
 app.listen(port, () => console.log('Server is running on port ' + port));
